@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".UI.task_detail_fragment.TaskDetailFragment">
+
+    <View
+        android:id="@+id/priority_view"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:background="@color/color_high"
+        app:layout_constraintBottom_toTopOf="@+id/task_title_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <EditText
+        android:id="@+id/task_title_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+
+        android:ems="10"
+        android:hint="Enter Task Title"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/task_desc_et"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/priority_view" />
+
+    <EditText
+        android:id="@+id/task_desc_et"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        android:ems="10"
+        android:hint="Enter Task Description"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/priority_tv"
+        app:layout_constraintEnd_toEndOf="@+id/task_title_et"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/task_title_et"
+        app:layout_constraintTop_toBottomOf="@+id/task_title_et" />
+
+    <TextView
+        android:id="@+id/priority_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Priority :"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/status_tv"
+        app:layout_constraintEnd_toStartOf="@+id/priority_spinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@+id/task_desc_et"
+        app:layout_constraintTop_toBottomOf="@+id/task_desc_et" />
+
+    <Spinner
+        android:id="@+id/priority_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/priority_tv"
+        app:layout_constraintEnd_toEndOf="@+id/task_desc_et"
+        app:layout_constraintStart_toEndOf="@+id/priority_tv"
+        app:layout_constraintTop_toTopOf="@+id/priority_tv" />
+
+    <TextView
+        android:id="@+id/status_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Status :"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/priority_tv"
+        app:layout_constraintTop_toBottomOf="@+id/priority_tv" />
+
+    <RadioGroup
+        android:id="@+id/status_rb_group"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/status_tv"
+        app:layout_constraintEnd_toEndOf="@+id/priority_spinner"
+        app:layout_constraintStart_toStartOf="@+id/priority_spinner"
+        app:layout_constraintTop_toTopOf="@+id/status_tv">
+
+        <RadioButton
+            android:id="@+id/status_open_rb"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:checked="true"
+            android:text="Open" />
+
+        <RadioButton
+            android:id="@+id/status_closed_rb"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Closed" />
+    </RadioGroup>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Save"
+        app:layout_constraintEnd_toStartOf="@+id/delete_btn"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@+id/status_tv"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <Button
+        android:id="@+id/delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="@+id/status_rb_group"
+        app:layout_constraintStart_toEndOf="@+id/save_btn"
+        app:layout_constraintTop_toTopOf="@+id/save_btn" />
+</androidx.constraintlayout.widget.ConstraintLayout>
