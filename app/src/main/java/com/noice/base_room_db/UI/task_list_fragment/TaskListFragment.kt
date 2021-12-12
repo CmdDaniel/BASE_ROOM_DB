@@ -55,14 +55,14 @@ class TaskListFragment : Fragment() {
                 })
             }
 
-//            vm.sortedTasks.observe(viewLifecycleOwner) {
-//                (adapter as TasksListRVAdapter).submitList(it)
-//            }
-
-            vm.tasks.observe(viewLifecycleOwner) {
+            vm.sortedTasks.observe(viewLifecycleOwner) {
                 (adapter as TasksListRVAdapter).submitList(it)
-                Log.i("TLF","tasks list changed")
             }
+
+//            vm.tasks.observe(viewLifecycleOwner) {
+//                (adapter as TasksListRVAdapter).submitList(it)
+//                Log.i("TLF","tasks list changed")
+//            }
         }
 
         bind.floatingActionButton.setOnClickListener {
