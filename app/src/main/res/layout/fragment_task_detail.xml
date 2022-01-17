@@ -19,41 +19,53 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread_inside" />
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/task_title_et"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
 
         android:ems="10"
-        android:hint="Enter Task Title"
+        android:hint="@string/enter_task_title"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/task_desc_et"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/priority_view" />
+        app:layout_constraintTop_toBottomOf="@+id/priority_view">
 
-    <EditText
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/task_desc_et"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:ems="10"
-        android:hint="Enter Task Description"
+        android:hint="@string/enter_task_description"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/priority_tv"
         app:layout_constraintEnd_toEndOf="@+id/task_title_et"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@+id/task_title_et"
-        app:layout_constraintTop_toBottomOf="@+id/task_title_et" />
+        app:layout_constraintTop_toBottomOf="@+id/task_title_et">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/priority_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Priority :"
+        android:text="@string/priority"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/status_tv"
         app:layout_constraintEnd_toStartOf="@+id/priority_spinner"
@@ -66,7 +78,7 @@
         android:id="@+id/priority_spinner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="@+id/priority_tv"
         app:layout_constraintEnd_toEndOf="@+id/task_desc_et"
         app:layout_constraintStart_toEndOf="@+id/priority_tv"
@@ -77,7 +89,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Status :"
+        android:text="@string/status"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/priority_tv"
@@ -102,7 +114,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:checked="true"
-            android:text="Open" />
+            android:text="@string/open" />
 
         <RadioButton
             android:id="@+id/status_closed_rb"
@@ -110,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Closed" />
+            android:text="@string/closed" />
     </RadioGroup>
 
     <androidx.constraintlayout.widget.Guideline
@@ -118,14 +130,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.57" />
 
     <Button
         android:id="@+id/save_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="Save"
+        android:layout_margin="32dp"
+        android:text="@string/save"
         app:layout_constraintEnd_toStartOf="@+id/delete_btn"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="@+id/status_tv"
@@ -135,8 +147,8 @@
         android:id="@+id/delete_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:text="Delete"
+        android:layout_marginEnd="32dp"
+        android:text="@string/delete"
         app:layout_constraintEnd_toEndOf="@+id/status_rb_group"
         app:layout_constraintStart_toEndOf="@+id/save_btn"
         app:layout_constraintTop_toTopOf="@+id/save_btn" />

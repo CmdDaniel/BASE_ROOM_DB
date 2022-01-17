@@ -1,7 +1,6 @@
 package com.noice.base_room_db.UI.task_list_fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -12,14 +11,13 @@ import com.noice.base_room_db.DATA.room_setup.SortColumn
 import com.noice.base_room_db.R
 import com.noice.base_room_db.databinding.FragmentTaskListMasterBinding
 import com.noice.base_room_db.UI.task_list_fragment.task_list_adapter.TasksListRVAdapter
-import com.noice.base_room_db.UI.task_list_fragment.task_list_view_model.TaskListViewModel
 
 
 class TaskListFragment : Fragment() {
 
     private val columnCount = 1
     lateinit var bind: FragmentTaskListMasterBinding
-    lateinit var vm:TaskListViewModel
+    lateinit var vm: TaskListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +30,7 @@ class TaskListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         bind = FragmentTaskListMasterBinding.inflate(layoutInflater, container, false)
 
@@ -55,14 +53,11 @@ class TaskListFragment : Fragment() {
                 })
             }
 
+
             vm.sortedTasks.observe(viewLifecycleOwner) {
                 (adapter as TasksListRVAdapter).submitList(it)
             }
 
-//            vm.tasks.observe(viewLifecycleOwner) {
-//                (adapter as TasksListRVAdapter).submitList(it)
-//                Log.i("TLF","tasks list changed")
-//            }
         }
 
         bind.floatingActionButton.setOnClickListener {
@@ -71,6 +66,12 @@ class TaskListFragment : Fragment() {
             )
         }
         return bind.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        vm.changeSortOrder(SortColumn.Priority)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

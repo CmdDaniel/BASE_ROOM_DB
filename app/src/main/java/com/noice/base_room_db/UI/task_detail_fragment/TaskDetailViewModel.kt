@@ -1,4 +1,4 @@
-package com.noice.base_room_db.UI.task_detail_fragment.task_detail_view_model
+package com.noice.base_room_db.UI.task_detail_fragment
 
 import android.app.Application
 import android.util.Log

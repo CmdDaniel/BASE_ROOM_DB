@@ -1,25 +1,18 @@
-package com.noice.base_room_db.UI.task_list_fragment.task_list_view_model
+package com.noice.base_room_db.UI.task_list_fragment
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.noice.base_room_db.DATA.repository.TasksRepository
 import com.noice.base_room_db.DATA.room_setup.SortColumn
-import com.noice.base_room_db.DATA.room_setup.Task
-import com.noice.base_room_db.UI.task_list_fragment.task_list_adapter.TasksListRVAdapter
 
 class TaskListViewModel(context:Application):AndroidViewModel(context) {
     private val repo = TasksRepository(getApplication())
 
-    private val _sortOrder = MutableLiveData<SortColumn>(SortColumn.Priority)
+    private val _sortOrder = MutableLiveData(SortColumn.Priority)
 
-
-    val isUpdated = MutableLiveData(1)
-
-    var tasks = repo.getAllTasks()
 
 
     val sortedTasks = Transformations.switchMap(_sortOrder){
@@ -30,10 +23,7 @@ class TaskListViewModel(context:Application):AndroidViewModel(context) {
         _sortOrder.value = sortColumn
     }
 
-    fun updateTasksList(){
-        isUpdated.value = 10
-        Log.i("After UpdateTask()",tasks.value.toString())
-    }
+
 
     override fun onCleared() {
         super.onCleared()

@@ -10,14 +10,12 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.RadioButton
 import androidx.core.content.ContextCompat
-import androidx.core.view.get
 import androidx.lifecycle.ViewModelProvider
 import com.noice.base_room_db.R
 import com.noice.base_room_db.databinding.FragmentTaskDetailBinding
 import com.noice.base_room_db.DATA.room_setup.PriorityLevel
 import com.noice.base_room_db.DATA.room_setup.Task
 import com.noice.base_room_db.DATA.room_setup.TaskStatus
-import com.noice.base_room_db.UI.task_detail_fragment.task_detail_view_model.TaskDetailViewModel
 
 
 class TaskDetailFragment : Fragment() {
@@ -52,7 +50,7 @@ class TaskDetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View{
 
         vm.task.observe(viewLifecycleOwner,{
             setData(it)
@@ -106,18 +104,18 @@ class TaskDetailFragment : Fragment() {
 
         if(task == null){
             Log.i("inside setData","$task , $taskId")
-            bind.deleteBtn.text = "Cancel"
+            bind.deleteBtn.setText("Cancel")
         }else{
             Log.i("inside setData","$task , $taskId")
-            bind.taskTitleEt.setText(task.title)
-            bind.taskDescEt.setText(task.desc)
+            bind.taskTitleEt.editText?.setText(task.title)
+            bind.taskDescEt.editText?.setText(task.desc)
             bind.prioritySpinner.setSelection(task.priority)
             updateTaskPriorityView(task.priority)
             if(task.status == TaskStatus.Open.ordinal ){
-                bind.statusOpenRb.isChecked = true
+                bind.statusOpenRb.setChecked(true)
             }
             else{
-                bind.statusClosedRb.isChecked = true
+                bind.statusClosedRb.setChecked(true)
             }
         }
 
@@ -126,8 +124,8 @@ class TaskDetailFragment : Fragment() {
 
     private fun saveTask(){
 
-        val title = bind.taskTitleEt.text.toString()
-        val desc = bind.taskDescEt.text.toString()
+        val title = bind.taskTitleEt.editText?.text.toString()
+        val desc = bind.taskDescEt.editText?.text.toString()
         val priority = bind.prioritySpinner.selectedItemPosition
         val checkedRadioButton =  bind.statusRbGroup.findViewById<RadioButton>(bind.statusRbGroup.checkedRadioButtonId)
         val status = when(checkedRadioButton.text ){
