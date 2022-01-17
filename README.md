@@ -8,7 +8,7 @@
 
 
 
-![ App Demo shown Here... ](https://github.com/DanTheNormie/Basic-Todo-App/blob/master/Todo%20App%20demo.gif)
+<p align="left"> <img src="https://github.com/DanTheNormie/Basic-Todo-App/blob/master/Todo%20App%20demo.gif" alt="android" width="400" height="720"/>() </p>
 
 
 <h3 align="left">Languages and Tools:</h3>
